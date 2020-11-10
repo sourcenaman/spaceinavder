@@ -370,4 +370,10 @@ body {
     height: 100px;
     touch-action: manipulation;
   }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+  }
 }
