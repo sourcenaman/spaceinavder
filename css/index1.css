@@ -365,9 +365,9 @@ body {
 
   .mobilebutton {
     display: block;
-    font-size: 20px;
     margin: 20px;
-    padding: 40px;
+    width: 100px;
+    height: 100px;
     touch-action: manipulation;
   }
 }
