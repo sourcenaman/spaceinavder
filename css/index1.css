@@ -357,7 +357,7 @@ body {
 }
 @media screen and (max-width: 980px) {
   #container {
-    height: 1200px;
+    height: 900px;
     width: 100%;
     position: relative;
     background-color: #000;
@@ -366,5 +366,7 @@ body {
   .mobilebutton {
     display: block;
     font-size: 20px;
+    margin: 20px;
+    padding: 40px;
   }
 }
