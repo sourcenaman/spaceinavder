@@ -352,8 +352,8 @@
 	
 	GameView.prototype.addKeyListeners = function() {
 	  document.addEventListener('keydown', this.handleKeyDown.bind(this), false);
-	  //document.addEventListener('touchstart', this.handleKeyDown.bind(this), false);
-	  //document.addEventListener('touchend', this.handleKeyUp.bind(this), false);
+	  document.addEventListener('touchstart', this.handleKeyDown.bind(this), false);
+	  document.addEventListener('touchend', this.handleKeyUp.bind(this), false);
 	  document.addEventListener('keyup', this.handleKeyUp.bind(this), false);
 	};
 	
