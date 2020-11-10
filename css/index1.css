@@ -368,5 +368,6 @@ body {
     font-size: 20px;
     margin: 20px;
     padding: 40px;
+    touch-action: manipulation;
   }
 }
