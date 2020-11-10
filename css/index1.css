@@ -349,7 +349,7 @@ body {
 
 @media screen and (max-width: 1200px) {
   #container {
-    height: 500px;
+    height: 100%;
     width: 100%;
     position: relative;
     background-color: #000;
@@ -357,7 +357,7 @@ body {
 }
 @media screen and (max-width: 980px) {
   #container {
-    height: 900px;
+    height: 100%;
     width: 100%;
     position: relative;
     background-color: #000;
