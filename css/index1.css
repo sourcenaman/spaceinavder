@@ -366,8 +366,8 @@ body {
   .mobilebutton {
     display: block;
     margin: 20px;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     touch-action: manipulation;
   }
 
