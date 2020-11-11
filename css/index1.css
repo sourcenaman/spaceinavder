@@ -380,21 +380,18 @@ body {
     background-image: url(../images/left.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
+    touch-action: none;
   }
   #right {
     background-image: url(../images/right.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
+    touch-action: none;
   }
   #shoot {
     background-image: url(../images/shoot.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
+    touch-action: none;
   }
 }
