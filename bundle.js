@@ -278,9 +278,8 @@
 	};
 	
 	GameView.prototype.restart = function() {
-		location.reload();
-	  //this.stop();
-	  //this.start();
+	  this.stop();
+	  this.start();
 	};
 	
 	GameView.prototype.welcome = function() {
@@ -298,16 +297,16 @@
 	
 	GameView.prototype.gameOver = function() {
 	  this.stop();
-	  location.reload();
 	
 	  document.getElementById('menu-container').className='hide';
+	  document.getElementById('menu-button').className='hide';
 	
 	  setTimeout(() => {
 	    this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
 	    this.ctx.fillStyle = '#000';
 	    this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
 	    let gameOverImage  = document.getElementById('game-over'),
-	        playGameButton = document.getElementById('play-game');
+	        playGameButton = document.getElementById('restart-button');
 	    playGameButton.className = '';
 	    gameOverImage.className = '';
 	  }, 600);
