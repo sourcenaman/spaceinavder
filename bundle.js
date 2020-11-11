@@ -278,8 +278,9 @@
 	};
 	
 	GameView.prototype.restart = function() {
-	  this.stop();
-	  this.start();
+		location.reload();
+	  //this.stop();
+	  //this.start();
 	};
 	
 	GameView.prototype.welcome = function() {
