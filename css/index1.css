@@ -380,18 +380,18 @@ body {
     background-image: url(../images/left.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: none;
+    touch-action: manipulation;
   }
   #right {
     background-image: url(../images/right.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: none;
+    touch-action: manipulation;
   }
   #shoot {
     background-image: url(../images/shoot.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: none;
+    touch-action: manipulation;
   }
 }
