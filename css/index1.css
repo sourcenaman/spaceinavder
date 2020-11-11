@@ -9,6 +9,8 @@ body {
   padding: 0;
   margin: 0;
   border: 0;
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
 }
 
 .mobilebutton {
@@ -368,8 +370,6 @@ body {
     margin: 20px;
     width: 200px;
     height: 200px;
-    touch-action: manipulation;
-    -webkit-touch-callout: none;
   }
 
   .row {

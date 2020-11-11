@@ -4,6 +4,7 @@
     <title>Space Invaders</title>
     <script src="bundle.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/index1.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet" />
   </head>
 
@@ -108,6 +109,26 @@ $(document).ready(function() {
 	$(document).bind("contextmenu", function(e) {
 		return false;
 	});
+});
+
+$(document).ready(function(){
+
+   $('.mobilebutton').disableSelection();
+
+});
+
+$.fn.extend({
+    disableSelection: function() {
+        this.each(function() {
+            this.onselectstart = function() {
+                return false;
+            };
+            this.unselectable = "on";
+            $(this).css('-moz-user-select', 'none');
+            $(this).css('-webkit-user-select', 'none');
+        });
+        return this;
+    }
 });
     </script>
   </body>
