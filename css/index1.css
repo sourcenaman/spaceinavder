@@ -368,21 +368,22 @@ body {
   }
 
   #left {
-    background-image: url(../images/left.png);
+    background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
     touch-action: manipulation;
   }
   #right {
-    background-image: url(../images/right.png);
+    background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
     touch-action: manipulation;
   }
   #shoot {
-    background-image: url(../images/shoot.png);
+    background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
     touch-action: manipulation;
+    margin-left: 20px;
   }
 }
