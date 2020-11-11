@@ -298,6 +298,7 @@
 	
 	GameView.prototype.gameOver = function() {
 	  this.stop();
+	  location.reload();
 	
 	  document.getElementById('menu-container').className='hide';
 	
