@@ -352,32 +352,33 @@
 	
 	GameView.prototype.addKeyListeners = function() {
 	  document.addEventListener('keydown', this.handleKeyDown.bind(this), false);
-	  document.addEventListener('touchStart', this.handleKeyDown.bind(this), false);
-	  document.addEventListener('touchEnd', this.handleKeyUp.bind(this), false);
+	  document.addEventListener('touchstart', this.handleKeyDown.bind(this), false);
+	  document.addEventListener('touchend', this.handleKeyUp.bind(this), false);
 	  document.addEventListener('keyup', this.handleKeyUp.bind(this), false);
 	};
 	
 	GameView.prototype.handleKeyDown = function(e) {
-	  if (e.keyCode === 37 || e.path[0].id == "left") {
+	  if (e.keyCode === 37 || e.srcElement.id == "left") {
 	    this.leftPressed = true;
-	  } else if (e.keyCode === 39 || e.path[0].id == "right") {
+	  } else if (e.keyCode === 39 || e.srcElement.id == "right") {
 	    this.rightPressed = true;
 	  }
 	
-	  if (e.keyCode === 32 || e.path[0].id == "shoot") {
+	  if (e.keyCode === 32 || e.srcElement.id == "shoot") {
 	    this.spacePressed = true;
 	  }
 	};
 
 	
 	GameView.prototype.handleKeyUp = function(e) {
-	  if (e.keyCode === 37 || e.path[0].id == "left") {
+
+	  if (e.keyCode === 37 || e.srcElement.id == "left") {
 	    this.leftPressed = false;
-	  } else if (e.keyCode === 39 || e.path[0].id == "right") {
+	  } else if (e.keyCode === 39 || e.srcElement.id == "right") {
 	    this.rightPressed = false;
 	  }
 	
-	  if (e.keyCode === 32 || e.path[0].id == "shoot") {
+	  if (e.keyCode === 32 || e.srcElement.id == "shoot") {
 	    this.spacePressed = false;
 	  }
 	};
