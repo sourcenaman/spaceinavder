@@ -359,6 +359,7 @@ body {
     margin: 20px;
     width: 200px;
     height: 200px;
+    margin-top: 20rem;
   }
 
   .row {
@@ -371,19 +372,19 @@ body {
     background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
+    touch-action: none;
   }
   #right {
     background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
+    touch-action: none;
   }
   #shoot {
     background-image: url(../images/btn.png);
     background-repeat: no-repeat;
     background-size: 100%;
-    touch-action: manipulation;
+    touch-action: none;
     margin-left: 15rem;
   }
 }
