@@ -381,16 +381,16 @@ body {
   #left {
     background-image: url(../images/left.png);
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-size: 100%;
   }
   #right {
     background-image: url(../images/right.png);
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-size: 100%;
   }
   #shoot {
     background-image: url(../images/shoot.png);
     background-repeat: no-repeat;
-    background-position: 0 0;
+    background-size: 100%;
   }
 }

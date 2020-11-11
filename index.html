@@ -98,17 +98,17 @@
 
     <div class="row">
       <div class="mobilebutton" id="left"> </div>
-      <img class="mobilebutton" id="right"> </div>
+      <div class="mobilebutton" id="right"> </div>
       <div class="mobilebutton" id="shoot"> </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.core.min.js"></script>
     <script>
-      $(document).ready(function() {
+      {% comment %} $(document).ready(function() {
 	$(document).bind("contextmenu", function(e) {
 		return false;
 	});
-});
+}); {% endcomment %}
     </script>
   </body>
 </html>
