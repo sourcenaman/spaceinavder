@@ -358,27 +358,28 @@
 	};
 	
 	GameView.prototype.handleKeyDown = function(e) {
-	  if (e.keyCode === 37 || e.srcElement.id == "left") {
+		var id = e.srcElement.id;
+	  if (e.keyCode === 37 || id == "left") {
 	    this.leftPressed = true;
-	  } else if (e.keyCode === 39 || e.srcElement.id == "right") {
+	  } else if (e.keyCode === 39 || id == "right") {
 	    this.rightPressed = true;
 	  }
 	
-	  if (e.keyCode === 32 || e.srcElement.id == "shoot") {
+	  if (e.keyCode === 32 || id == "shoot") {
 	    this.spacePressed = true;
 	  }
 	};
 
 	
 	GameView.prototype.handleKeyUp = function(e) {
-
-	  if (e.keyCode === 37 || e.srcElement.id == "left") {
+		var id = e.srcElement.id;
+	  if (e.keyCode === 37 || id == "left") {
 	    this.leftPressed = false;
-	  } else if (e.keyCode === 39 || e.srcElement.id == "right") {
+	  } else if (e.keyCode === 39 || id == "right") {
 	    this.rightPressed = false;
 	  }
 	
-	  if (e.keyCode === 32 || e.srcElement.id == "shoot") {
+	  if (e.keyCode === 32 || id == "shoot") {
 	    this.spacePressed = false;
 	  }
 	};
