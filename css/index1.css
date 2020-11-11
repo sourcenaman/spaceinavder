@@ -369,11 +369,28 @@ body {
     width: 200px;
     height: 200px;
     touch-action: manipulation;
+    -webkit-touch-callout: none;
   }
 
   .row {
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+  }
+
+  #left {
+    background-image: url(../images/left.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  #right {
+    background-image: url(../images/right.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  #shoot {
+    background-image: url(../images/shoot.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
   }
 }
