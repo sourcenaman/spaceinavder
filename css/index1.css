@@ -241,19 +241,11 @@ body {
   color: #ffff6d;
 }
 
-#main-logo {
-  position: absolute;
-  top: 10px;
-  left: 65px;
-
-  height: 400px;
-  width: 330px;
-}
-
+#main-logo,
 #main-logo-2 {
   position: absolute;
   top: 10px;
-  right: 65px;
+  left: 25%;
 
   height: 400px;
   width: 330px;
