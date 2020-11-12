@@ -529,9 +529,9 @@
 	        game: this,
 	        canvasSize: this.canvasSize,
 	        img: invaderShipImage,
-	        radius: 20,
+	        radius: 25,
 	        pos: [
-	          x * 40,
+	          x * 50,
 	          y
 	        ],
 	        vel: vel,
@@ -837,9 +837,9 @@
 	  if (this.name === 'defender') {
 	    x -= 4;
 	    y -= 4;
-	    ctx.drawImage(this.img, x, y, 33, 33);
-	  } else {
 	    ctx.drawImage(this.img, x, y, 50, 50);
+	  } else {
+	    ctx.drawImage(this.img, x, y, 60, 55);
 	  }
 	
 	};
