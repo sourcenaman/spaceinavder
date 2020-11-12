@@ -263,8 +263,8 @@ body {
 #score {
   position: absolute;
   left: 35%;
-  bottom: 350px;
-  width: 30%;
+  bottom: 25%;
+  width: 25%;
 }
 
 #soldier-1 {
@@ -296,7 +296,7 @@ body {
 
 #play-game {
   position: absolute;
-  bottom: 135px;
+  bottom: 10%;
   left: 35%;
 
   z-index: 5;
