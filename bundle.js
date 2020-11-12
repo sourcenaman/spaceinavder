@@ -529,7 +529,7 @@
 	        game: this,
 	        canvasSize: this.canvasSize,
 	        img: invaderShipImage,
-	        radius: 12,
+	        radius: 20,
 	        pos: [
 	          x * 40,
 	          y
