@@ -17,14 +17,8 @@ body {
   display: none;
 }
 
-/* #left,
-#right,
-#shoot {
-  touch-action: manipulation;
-} */
-
 #container {
-  height: 800px;
+  /* height: 800px; */
   width: 65%;
   position: relative;
   background-color: #000;
