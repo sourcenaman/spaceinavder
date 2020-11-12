@@ -17,11 +17,11 @@ body {
   display: none;
 }
 
-#left,
+/* #left,
 #right,
 #shoot {
   touch-action: manipulation;
-}
+} */
 
 #container {
   height: 800px;

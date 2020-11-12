@@ -98,14 +98,20 @@
     </div>
 
     <div class="row">
-      <div class="mobilebutton" id="left"> </div>
-      <div class="mobilebutton" id="right"> </div>
-      <div class="mobilebutton" id="shoot"> </div>
+      <div class="mobilebutton no-zoom" id="left"> </div>
+      <div class="mobilebutton no-zoom" id="right"> </div>
+      <div class="mobilebutton no-zoom" id="shoot"> </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.5/howler.core.min.js"></script>
     <script>
     console.log(navigator.platform);
+    $('.no-zoom').bind('touchend', function(e) {
+  e.preventDefault();
+  // Add your code here. 
+  $(this).click();
+  // This line still calls the standard click event, in case the user needs to interact with the element that is being clicked on, but still avoids zooming in cases of double clicking.
+})
 $(document).ready(function() {
 	$(document).bind("contextmenu", function(e) {
 		return false;
