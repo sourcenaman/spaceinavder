@@ -839,7 +839,7 @@
 	    y -= 4;
 	    ctx.drawImage(this.img, x, y, 55, 40);
 	  } else {
-	    ctx.drawImage(this.img, x, y, 60, 45);
+	    ctx.drawImage(this.img, x, y, 60, 35);
 	  }
 	
 	};
