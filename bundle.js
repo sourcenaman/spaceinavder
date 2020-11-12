@@ -197,14 +197,15 @@
 	  });
 	
 	  restartButton.addEventListener('click', () => {
-	    menuContainer.className = 'hide';
-	    aboutButton.className = 'hide';
-	    instructionsButton.className = 'hide';
-	    resumeButton.className = 'hide';
-	    restartButton.className = 'hide';
-	
-	    gameView.restart();
+		  location.reload();
+	    // menuContainer.className = 'hide';
+	    // aboutButton.className = 'hide';
+	    // instructionsButton.className = 'hide';
+	    // resumeButton.className = 'hide';
+	    // restartButton.className = 'hide';
+	    // gameView.restart();
 	  });
+
 	  restartGame.addEventListener('click', () => {
 		location.reload();
 	  });
@@ -233,7 +234,7 @@
 	  this.leftPressed = false;
 	  this.spacePressed = false;
 	
-	  this.isMuted = false;
+	  this.isMuted = true;
 	
 	  this.addKeyListeners();
 	};
