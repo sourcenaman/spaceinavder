@@ -57,18 +57,6 @@ body {
   padding: 0;
 }
 
-#splash-instruction {
-  position: absolute;
-  bottom: 12%;
-  left: 38%;
-
-  text-align: center;
-  font-family: "Bungee Inline", cursive;
-  font-size: 23px;
-  color: #fff;
-  letter-spacing: 2px;
-}
-
 #audio {
   position: absolute;
   bottom: 10px;
@@ -251,7 +239,16 @@ body {
   width: 50%;
 }
 
-#score {
+#grunt-1 {
+  position: absolute;
+  left: 355px;
+  bottom: 350px;
+
+  height: 30px;
+  width: 30px;
+}
+
+#splash-instruction {
   position: absolute;
   left: 35%;
   bottom: 25%;
