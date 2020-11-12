@@ -384,7 +384,7 @@ body {
 }
 @media screen and (max-width: 980px) {
   #container {
-    height: 150%;
+    height: 1000px;
     width: 100%;
     position: relative;
     background-color: #000;
