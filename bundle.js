@@ -58,7 +58,7 @@
 	  gameView.welcome();
 	
 	  const mainLogo           = document.getElementById('main-logo');
-	  const mainLogo2           = document.getElementById('main-logo-2');
+	  const mainLogo2          = document.getElementById('main-logo-2');
 	  const playGameButton     = document.getElementById('play-game');
 	  const gameOverImage      = document.getElementById('game-over');
 	  const menuButton         = document.getElementById('menu-button');
@@ -240,6 +240,7 @@
 	};
 	
 	GameView.prototype.toggleAudio = function() {
+		audio();
 	  this.isMuted = this.isMuted ? false : true;
 	};
 	
@@ -1416,9 +1417,7 @@
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
-
-	const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-	
+	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
 	const createOscillator = (freq) => {
 	  const osc = audioCtx.createOscillator();
 	  osc.type = "sine";
@@ -1455,7 +1454,7 @@
 	};
 	
 	module.exports = Note;
-
+});	
 
 /***/ },
 /* 9 */

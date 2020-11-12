@@ -2,7 +2,6 @@
   <head>
     <meta charset="utf-8" />
     <title>Aristrocat Moon Mission</title>
-    <script src="bundle.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/index1.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet" />
@@ -105,10 +104,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.core.min.js"></script>
     <script>
-
-    document.querySelector('#play-game').addEventListener('click', function() {
-  var context = new AudioContext();
+    $('#play-game').click(function() {
+    if(typeof TinyMCE == "undefined") {
+        $.getScript('bundle.js', function() {
+            TinyMCE.init();
+        });
+    }
 });
+</script>
+    <script>
+
 
     if (window.innerWidth>1200){
       document.getElementById("container").style.height = window.innerHeight + "px";
@@ -121,11 +126,11 @@
 })
 
 
-{% comment %} $(document).ready(function() {
+$(document).ready(function() {
 	$(document).bind("contextmenu", function(e) {
 		return false;
 	});
-}); {% endcomment %}
+});
 
 
 $(document).ready(function(){
