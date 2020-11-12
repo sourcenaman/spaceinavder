@@ -835,7 +835,7 @@
 	    y -= 4;
 	    ctx.drawImage(this.img, x, y, 33, 33);
 	  } else {
-	    ctx.drawImage(this.img, x, y, 25, 25);
+	    ctx.drawImage(this.img, x, y, 50, 50);
 	  }
 	
 	};
