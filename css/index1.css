@@ -365,8 +365,8 @@ body {
 #game-over {
   position: absolute;
   z-index: 5;
-  bottom: 100px;
-  left: 3%;
+  bottom: 25%;
+  left: 10%;
   width: 75%;
 }
 
