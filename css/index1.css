@@ -251,15 +251,6 @@ body {
   width: 50%;
 }
 
-#grunt-1 {
-  position: absolute;
-  left: 355px;
-  bottom: 350px;
-
-  height: 30px;
-  width: 30px;
-}
-
 #score {
   position: absolute;
   left: 35%;
