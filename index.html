@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <head>
     <meta charset="utf-8" />
-    <title>Space Invaders</title>
+    <title>Aristrocat Moon Mission</title>
     <script src="bundle.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/index1.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -105,6 +105,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.core.min.js"></script>
     <script>
+
+    document.querySelector('#play-game').addEventListener('click', function() {
+  var context = new AudioContext();
+});
 
     if (window.innerWidth>1000){
       document.getElementById("container").style.height = window.innerHeight + "px";
