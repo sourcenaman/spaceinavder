@@ -837,9 +837,9 @@
 	  if (this.name === 'defender') {
 	    x -= 4;
 	    y -= 4;
-	    ctx.drawImage(this.img, x, y, 50, 50);
+	    ctx.drawImage(this.img, x, y, 55, 40);
 	  } else {
-	    ctx.drawImage(this.img, x, y, 60, 55);
+	    ctx.drawImage(this.img, x, y, 60, 45);
 	  }
 	
 	};
