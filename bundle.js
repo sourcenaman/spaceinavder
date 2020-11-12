@@ -518,7 +518,7 @@
 	      invaderShipImage = document.getElementById('grunt-1');
 	    }
 	
-	    for (let x = 1; x < 14; x++, invaderIdx++) {
+	    for (let x = 1; x < 11; x++, invaderIdx++) {
 	      let invaderShip = new Ship ({
 	        id: invaderIdx,
 	        name: invaderShipName,
@@ -527,7 +527,7 @@
 	        img: invaderShipImage,
 	        radius: 12,
 	        pos: [
-	          x * 35,
+	          x * 40,
 	          y
 	        ],
 	        vel: vel,
@@ -535,7 +535,7 @@
 	      });
 	      this.invaderShips.push(invaderShip);
 	    }
-	    y += 40;
+	    y += 50;
 	  }
 	
 	};
