@@ -1417,6 +1417,7 @@
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
+	console.log(document.getElementById("play-game"));
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
 	const createOscillator = (freq) => {
 	  const osc = audioCtx.createOscillator();
