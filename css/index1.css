@@ -321,6 +321,41 @@ body {
   justify-content: center;
   align-items: center;
 }
+#restart-game {
+  position: absolute;
+  bottom: 30px;
+  left: 307px;
+
+  z-index: 5;
+  height: 50px;
+  width: 300px;
+  transition: all 0.2s ease-in;
+  border: 2px solid #fff;
+  border-radius: 3px;
+
+  font-family: "Bungee Inline", cursive;
+  font-size: 23px;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+#restart-game:hover {
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#restart-game p {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: -23px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .hide {
   display: none;

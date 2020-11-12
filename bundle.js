@@ -69,6 +69,7 @@
 	  const instructions       = document.getElementById('instructions');
 	  const resumeButton       = document.getElementById('resume-button');
 	  const restartButton      = document.getElementById('restart-button');
+	  const restartGame        = document.getElementById('restart-game');
 	  const closeAbout         = document.getElementById('close-about');
 	  const closeInstructions  = document.getElementById('close-instructions');
 	  const grunt              = document.getElementById('grunt-1');
@@ -204,6 +205,9 @@
 	
 	    gameView.restart();
 	  });
+	  restartGame.addEventListener('click', () => {
+		location.reload();
+	  });
 	
 	});
 
@@ -306,7 +310,7 @@
 	    this.ctx.fillStyle = '#000';
 	    this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
 	    let gameOverImage  = document.getElementById('game-over'),
-	        playGameButton = document.getElementById('restart-button');
+	        playGameButton = document.getElementById('restart-game');
 	    playGameButton.className = '';
 	    gameOverImage.className = '';
 	  }, 600);
