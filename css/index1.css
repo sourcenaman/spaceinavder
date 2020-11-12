@@ -424,4 +424,8 @@ body {
     left: 3%;
     width: 94%;
   }
+
+  body {
+    background-repeat: inherit;
+  }
 }
