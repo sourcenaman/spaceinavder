@@ -260,6 +260,13 @@ body {
   width: 30px;
 }
 
+#score {
+  position: absolute;
+  left: 35%;
+  bottom: 350px;
+  width: 30%;
+}
+
 #soldier-1 {
   position: absolute;
   left: 355px;
@@ -372,7 +379,7 @@ body {
   z-index: 5;
   bottom: 100px;
   left: 3%;
-  width: 94%;
+  width: 75%;
 }
 
 @media screen and (max-width: 1200px) {
