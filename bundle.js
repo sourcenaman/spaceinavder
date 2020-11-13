@@ -118,7 +118,7 @@
 	    ufo.className               = 'hide';
 	    invaderInfo.className       = 'hide';
 	    splashInstruction.className = 'hide';
-	
+	gameView.startAudio();
 	    gameView.start();
 	  });
 	
@@ -240,9 +240,10 @@
 	};
 
 		GameView.prototype.startAudio = function() {
-			console.log("audio started");
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
+	console.log(audioCtx);
 	const createOscillator = (freq) => {
+		console.log(freq);
 	  const osc = audioCtx.createOscillator();
 	  osc.type = "sine";
 	  osc.frequency.value = freq;
