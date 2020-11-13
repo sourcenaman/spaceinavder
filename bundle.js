@@ -1,6 +1,5 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
-console.log(modules);
 /******/ 	var installedModules = {};
 /******/
 /******/ 	// The require function
