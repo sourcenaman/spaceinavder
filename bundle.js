@@ -241,7 +241,6 @@
 
 		GameView.prototype.startAudio = function() {
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
-	console.log(audioCtx);
 	const createOscillator = (freq) => {
 		console.log(freq);
 	  const osc = audioCtx.createOscillator();
@@ -268,14 +267,6 @@
 	    'fireBullet': 880.00,
 	    'death': 1046.50
 	  };
-	};
-
-	Note.prototype.start = function() {
-	  this.gainNode.gain.value = 0.3;
-	};
-	
-	Note.prototype.stop = function() {
-	  this.gainNode.gain.value = 0;
 	};
 };
 	
@@ -1484,6 +1475,14 @@
 	    'fireBullet': 880.00,
 	    'death': 1046.50
 	  };
+	};
+	
+	Note.prototype.start = function() {
+	  this.gainNode.gain.value = 0.3;
+	};
+	
+	Note.prototype.stop = function() {
+	  this.gainNode.gain.value = 0;
 	};
 	
 	module.exports = Note;
