@@ -117,8 +117,8 @@
 	    invader.className           = 'hide';
 	    ufo.className               = 'hide';
 	    invaderInfo.className       = 'hide';
-	    splashInstruction.className = 'hide';
-	gameView.startAudio();
+		splashInstruction.className = 'hide';
+		
 	    gameView.start();
 	  });
 	
@@ -268,6 +268,14 @@
 	    'fireBullet': 880.00,
 	    'death': 1046.50
 	  };
+	};
+
+	Note.prototype.start = function() {
+	  this.gainNode.gain.value = 0.3;
+	};
+	
+	Note.prototype.stop = function() {
+	  this.gainNode.gain.value = 0;
 	};
 };
 	
@@ -1476,14 +1484,6 @@
 	    'fireBullet': 880.00,
 	    'death': 1046.50
 	  };
-	};
-	
-	Note.prototype.start = function() {
-	  this.gainNode.gain.value = 0.3;
-	};
-	
-	Note.prototype.stop = function() {
-	  this.gainNode.gain.value = 0;
 	};
 	
 	module.exports = Note;
