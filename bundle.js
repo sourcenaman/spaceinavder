@@ -1,5 +1,6 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
+console.log(modules);
 /******/ 	var installedModules = {};
 /******/
 /******/ 	// The require function
@@ -89,8 +90,8 @@
 	    } else {
 	      audio.className   = 'hide';
 	      mute.className    = 'show';
-	    }
-	
+		}
+		gameView.startAudio();
 	    gameView.toggleAudio();
 	  });
 	
@@ -238,6 +239,37 @@
 	
 	  this.addKeyListeners();
 	};
+
+		GameView.prototype.startAudio = function() {
+			console.log("audio started");
+	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
+	const createOscillator = (freq) => {
+	  const osc = audioCtx.createOscillator();
+	  osc.type = "sine";
+	  osc.frequency.value = freq;
+	  osc.detune.value = 0;
+	  osc.start(audioCtx.currentTime);
+	  return osc;
+	};
+	
+	const createGainNode = () => {
+	  const gainNode = audioCtx.createGain();
+	  gainNode.gain.value = 0;
+	  gainNode.connect(audioCtx.destination);
+	  return gainNode;
+	};
+	
+	const Note = function(freq) {
+	  this.oscillatorNode = createOscillator(freq);
+	  this.gainNode = createGainNode();
+	  this.oscillatorNode.connect(this.gainNode);
+	
+	  this.tones = {
+	    'fireBullet': 880.00,
+	    'death': 1046.50
+	  };
+	};
+};
 	
 	GameView.prototype.toggleAudio = function() {
 
@@ -1417,6 +1449,7 @@
 /***/ },
 /* 8 */
 /***/ function(module, exports) {
+	return;
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
 	const createOscillator = (freq) => {
 	  const osc = audioCtx.createOscillator();
