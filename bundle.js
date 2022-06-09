@@ -60,6 +60,7 @@
 	  const mainLogo           = document.getElementById('main-logo');
 	  const mainLogo2          = document.getElementById('main-logo-2');
 	  const playGameButton     = document.getElementById('play-game');
+	  const leaderboard        = document.getElementById('leaderboard');
 	  const gameOverImage      = document.getElementById('game-over');
 	  const menuButton         = document.getElementById('menu-button');
 	  const menuContainer      = document.getElementById('menu-container');
@@ -81,6 +82,7 @@
 	  const mute               = document.getElementById('mute');
 	  const splashInstruction  = document.getElementById('splash-instruction');
 	  const leftKey  		   = document.getElementById('left');
+	  const submitName         = document.getElementById('enter-name')
 	
 	  audio.addEventListener('click', () => {
 	    if (audio.className === 'hide') {
@@ -109,6 +111,7 @@
 	  playGameButton.addEventListener("click", () => {
 	    menuButton.className        =     '';
 	    playGameButton.className    = 'hide';
+	    leaderboard.className    = 'hide';
 		mainLogo.className          = 'hide';
 		mainLogo2.className         = 'hide';
 	    gameOverImage.className     = 'hide';
@@ -209,6 +212,38 @@
 	  restartGame.addEventListener('click', () => {
 		location.reload();
 	  });
+
+	  submitName.addEventListener('submit', (e) => {
+		e.preventDefault();
+      	var name = $('#name').val()
+		var data = {
+			name: name,
+			score: gameView.getScoreText()
+		}
+		$.ajax({
+      url: "https://spaceinvaderapi.pratapindustries.in/score/",
+		// url: "http://127.0.0.1:8000/score/",
+		data: JSON.stringify(data),
+		contentType: "application/json",
+		dataType: "json",
+		type: "post",
+		success: function (resp) {
+			gameView.gameOver()
+		},
+		});
+	  });
+
+	  leaderboard.addEventListener('click', (e) => {
+		$.ajax({
+            url: "https://spaceinvaderapi.pratapindustries.in",
+            // url: "http://127.0.0.1:8000",
+            contentType: "application/json",
+            type: "get",
+            success: function (resp) {
+              alert(JSON.stringify(resp));
+            },
+          });
+	  })
 	
 	});
 
@@ -239,7 +274,7 @@
 	  this.addKeyListeners();
 	};
 
-		GameView.prototype.startAudio = function() {
+	GameView.prototype.startAudio = function() {
 	const audioCtx = new (window.AudioContext || window.webkitAudioContext || AudioContext)();
 	const createOscillator = (freq) => {
 		console.log(freq);
@@ -268,7 +303,7 @@
 	    'death': 1046.50
 	  };
 	};
-};
+	};
 	
 	GameView.prototype.toggleAudio = function() {
 
@@ -331,21 +366,30 @@
 	GameView.prototype.resume = function() {
 	  this.isPaused = false;
 	};
+
+	GameView.prototype.getName = function () {
+      this.stop()
+	  let enterNameForm = document.getElementById('enter-name')
+	  enterNameForm.className = ''
+    };
 	
 	GameView.prototype.gameOver = function() {
 	  this.stop();
 	
 	  document.getElementById('menu-container').className='hide';
 	  document.getElementById('menu-button').className='hide';
+	  document.getElementById("enter-name").className = "hide";
 	
 	  setTimeout(() => {
 	    this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
 	    this.ctx.fillStyle = '#000';
 	    this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
 	    let gameOverImage  = document.getElementById('game-over'),
-	        playGameButton = document.getElementById('restart-game');
+	        playGameButton = document.getElementById('restart-game'),
+			leaderboardButton = document.getElementById('leaderboard');
 	    playGameButton.className = '';
 	    gameOverImage.className = '';
+	    leaderboardButton.className = '';
 	  }, 600);
 	
 	};
@@ -370,6 +414,10 @@
 	  let x = this.game.DIM_X * .01, y = this.game.DIM_Y * .05;
 	  // ctx.find = "20px Georgia";
 	  ctx.fillText(`SCORE: ${this.game.score}`, x, y);
+	};
+
+	GameView.prototype.getScoreText = function(ctx) {
+	  return this.game.score;
 	};
 	
 	GameView.prototype.addLevelText = function(ctx) {
@@ -455,7 +503,7 @@
 	  this.ctx = options.ctx;
 	  this.stars = [];
 	  this.defender = null;
-	  this.defenderLives = 3;
+	  this.defenderLives = 0;
 	  this.score = 0;
 	  this.level = 1;
 	  this.invaderShips = [];
@@ -678,7 +726,8 @@
 	Game.prototype.lose = function() {
 	  this.gameView.pause();
 	  this.gameView.addLivesText(this.ctx);
-	  this.gameView.gameOver();
+	  this.gameView.getName();
+	//   this.gameView.gameOver();
 	};
 	
 	Game.prototype.winRound = function() {

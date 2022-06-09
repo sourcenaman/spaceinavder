@@ -50,9 +50,21 @@
       <div id="play-game">
         <p>CLICK TO START</p>
       </div>
+       
+      <div id="leaderboard">
+        <p>LEADERBOARD</p>
+      </div>
 
-            <div class="hide" id="restart-game">
+      <div class="hide" id="restart-game">
         <p>PLAY AGAIN</p>
+      </div>
+
+      <div class="hide" id="enter-name">
+        <p>Enter Your Name</p>
+        <form action="#">
+          <input type="text" id="name" name="name" value="" maxlength="4"><br>
+          <input type="submit" value="Submit">
+        </form> 
       </div>
 
       <!-- Sprite images -->
@@ -103,6 +115,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.core.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- <script language="JavaScript" src="./dist/bundle.js"></script> -->
   <script language="JavaScript" src="bundle.js"></script>
     <script>
@@ -129,7 +142,6 @@ $(document).ready(function() {
 $(document).ready(function(){
    $('div').disableSelection();
 });
-
 
 $.fn.extend({
     disableSelection: function() {
