@@ -122,6 +122,28 @@ body {
   border-radius: 10px;
 }
 
+#leaderboard-container {
+  position: absolute;
+  bottom: 200px;
+  left: 470px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  background-color: grey;
+  height: 400px;
+  width: 300px;
+
+  font-family: "Bungee Inline", cursive;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #fff;
+
+  border-radius: 10px;
+}
+
 .header {
   color: #ee300c;
 }
@@ -224,6 +246,11 @@ body {
 }
 
 #restart-button:hover {
+  cursor: pointer;
+  color: #ffff6d;
+}
+
+#restart-buttonlb:hover {
   cursor: pointer;
   color: #ffff6d;
 }
@@ -399,9 +426,14 @@ body {
 #game-over {
   position: absolute;
   z-index: 5;
-  bottom: 25%;
+  bottom: 50%;
   left: 10%;
   width: 75%;
+}
+
+table, th, td {
+  border:1px solid black;
+  width: 100%;
 }
 
 @media screen and (max-width: 1200px) {
@@ -454,7 +486,7 @@ body {
   #game-over {
     position: absolute;
     z-index: 5;
-    bottom: 275px;
+    bottom: 500px;
     left: 3%;
     width: 94%;
   }

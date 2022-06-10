@@ -13,11 +13,33 @@
       <canvas id="game-canvas"></canvas>
 
       <div id="menu-container" class="hide menu-container">
-        <div class="header">SPACE INVADERS</div>
+        <div class="header">GO INVADE</div>
         <div id="about-button" class="hide button">About</div>
         <div id="instructions-button" class="hide button">Instructions</div>
         <div id="resume-button" class="hide button">Resume</div>
         <div id="restart-button" class="hide button">Restart</div>
+      </div>
+
+      <div id="leaderboard-container" class="hide leaderboard-container">
+        <div class="header">GO INVADE</div>
+        <table id="leaderboard-data">
+          <thead>
+            <tr>
+              <th>NAME</th>
+              <th>SCORE</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-data-body"></tbody>
+        </table>
+        <div id="close-button" class="hide button">Close</div>
+        <div id="restart-buttonlb" class="hide button">Restart</div>
+        <div class="hide" id="enter-name">
+          <p>Enter Your Name</p>
+          <form action="#">
+            <input type="text" id="name" name="name" value="" maxlength="4"><br>
+            <div id="submit-button" class="button">Submit</div>
+          </form> 
+        </div>
       </div>
 
       <div id="about" class="hide">
@@ -57,14 +79,6 @@
 
       <div class="hide" id="restart-game">
         <p>PLAY AGAIN</p>
-      </div>
-
-      <div class="hide" id="enter-name">
-        <p>Enter Your Name</p>
-        <form action="#">
-          <input type="text" id="name" name="name" value="" maxlength="4"><br>
-          <input type="submit" value="Submit">
-        </form> 
       </div>
 
       <!-- Sprite images -->

@@ -70,6 +70,7 @@
 	  const instructions       = document.getElementById('instructions');
 	  const resumeButton       = document.getElementById('resume-button');
 	  const restartButton      = document.getElementById('restart-button');
+	  const restartButtonlb      = document.getElementById('restart-buttonlb');
 	  const restartGame        = document.getElementById('restart-game');
 	  const closeAbout         = document.getElementById('close-about');
 	  const closeInstructions  = document.getElementById('close-instructions');
@@ -82,7 +83,8 @@
 	  const mute               = document.getElementById('mute');
 	  const splashInstruction  = document.getElementById('splash-instruction');
 	  const leftKey  		   = document.getElementById('left');
-	  const submitName         = document.getElementById('enter-name')
+	  const submitName         = document.getElementById("submit-button");
+	  const closeLeaderboard   = document.getElementById('close-button')
 	
 	  audio.addEventListener('click', () => {
 	    if (audio.className === 'hide') {
@@ -111,7 +113,7 @@
 	  playGameButton.addEventListener("click", () => {
 	    menuButton.className        =     '';
 	    playGameButton.className    = 'hide';
-	    leaderboard.className    = 'hide';
+	    leaderboard.className       = 'hide';
 		mainLogo.className          = 'hide';
 		mainLogo2.className         = 'hide';
 	    gameOverImage.className     = 'hide';
@@ -121,7 +123,7 @@
 	    ufo.className               = 'hide';
 	    invaderInfo.className       = 'hide';
 		splashInstruction.className = 'hide';
-		
+		gameView.hideLeaderboardHome()
 	    gameView.start();
 	  });
 	
@@ -201,19 +203,22 @@
 	
 	  restartButton.addEventListener('click', () => {
 		  location.reload();
-	    // menuContainer.className = 'hide';
-	    // aboutButton.className = 'hide';
-	    // instructionsButton.className = 'hide';
-	    // resumeButton.className = 'hide';
-	    // restartButton.className = 'hide';
-	    // gameView.restart();
+	  });
+
+	  restartButtonlb.addEventListener('click', () => {
+		  location.reload();
 	  });
 
 	  restartGame.addEventListener('click', () => {
 		location.reload();
 	  });
 
-	  submitName.addEventListener('submit', (e) => {
+	  closeLeaderboard.addEventListener("click", () => {
+      	gameView.hideLeaderboardHome();
+		gameView.showSplashInstruction();
+      });
+
+	  submitName.addEventListener('click', (e) => {
 		e.preventDefault();
       	var name = $('#name').val()
 		var data = {
@@ -221,26 +226,26 @@
 			score: gameView.getScoreText()
 		}
 		$.ajax({
-      url: "https://spaceinvaderapi.pratapindustries.in/score/",
-		// url: "http://127.0.0.1:8000/score/",
-		data: JSON.stringify(data),
-		contentType: "application/json",
-		dataType: "json",
-		type: "post",
-		success: function (resp) {
-			gameView.gameOver()
-		},
+			url: "https://spaceinvaderapi.pratapindustries.in/score/",
+			// url: "http://127.0.0.1:8000/score/",
+			data: JSON.stringify(data),
+			contentType: "application/json",
+			dataType: "json",
+			type: "post",
+			success: function () {
+				gameView.gameOver()
+			},
 		});
 	  });
 
-	  leaderboard.addEventListener('click', (e) => {
+	  leaderboard.addEventListener('click', (e) => {	
 		$.ajax({
             url: "https://spaceinvaderapi.pratapindustries.in",
             // url: "http://127.0.0.1:8000",
             contentType: "application/json",
             type: "get",
             success: function (resp) {
-              alert(JSON.stringify(resp));
+              gameView.showLeaderboardScore(resp);
             },
           });
 	  })
@@ -373,27 +378,6 @@
 	  enterNameForm.className = ''
     };
 	
-	GameView.prototype.gameOver = function() {
-	  this.stop();
-	
-	  document.getElementById('menu-container').className='hide';
-	  document.getElementById('menu-button').className='hide';
-	  document.getElementById("enter-name").className = "hide";
-	
-	  setTimeout(() => {
-	    this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-	    this.ctx.fillStyle = '#000';
-	    this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
-	    let gameOverImage  = document.getElementById('game-over'),
-	        playGameButton = document.getElementById('restart-game'),
-			leaderboardButton = document.getElementById('leaderboard');
-	    playGameButton.className = '';
-	    gameOverImage.className = '';
-	    leaderboardButton.className = '';
-	  }, 600);
-	
-	};
-	
 	GameView.KEY_BINDS = {
 	  'left': [-2, 0],
 	  'right': [2, 0]
@@ -416,9 +400,101 @@
 	  ctx.fillText(`SCORE: ${this.game.score}`, x, y);
 	};
 
-	GameView.prototype.getScoreText = function(ctx) {
+	GameView.prototype.getScoreText = function() {
 	  return this.game.score;
 	};
+
+	GameView.prototype.hideLeaderboardHome = function () {
+      document.getElementById("leaderboard-container").className = "hide leaderboard";
+      document.getElementById("close-button").className = "hide button";
+      document.getElementById("leaderboard-data").className = "hide";
+      const table = document.getElementById("leaderboard-data-body");
+      while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+    };
+
+	GameView.prototype.showSplashInstruction = function () {
+      document.getElementById("splash-instruction").className = "show";
+    };
+
+	GameView.prototype.showLeaderboardScore = function(data) {
+	  document.getElementById("splash-instruction").className = 'hide'
+	  document.getElementById('leaderboard-container').className = 'show leaderboard'
+	  document.getElementById('close-button').className = 'show button'
+	  document.getElementById("leaderboard-data").className = "show";
+      const table = document.getElementById("leaderboard-data-body");
+	  while (table.firstChild) {
+        table.removeChild(table.firstChild);
+      }
+      data.forEach((item) => {
+        let row = table.insertRow();
+        let name = row.insertCell(0);
+        name.innerHTML = item.name;
+        let score = row.insertCell(1);
+        score.innerHTML = item.score;
+      });
+	};
+
+	GameView.prototype.showLeaderboardNameSubmit = function() {
+		this.stop();
+
+		document.getElementById("menu-container").className = "hide";
+		document.getElementById("menu-button").className = "hide";
+
+		setTimeout(() => {
+			this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+			this.ctx.fillStyle = "#000";
+			this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
+		}, 600);
+	  document.getElementById('leaderboard-container').className = 'show leaderboard'
+	  document.getElementById("close-button").className = "hide button";
+	  document.getElementById("leaderboard-data").className = "hide";
+	  document.getElementById("enter-name").className = "show";
+	};
+
+	GameView.prototype.gameOver = function () {
+      this.stop();
+
+      document.getElementById("menu-container").className = "hide";
+      document.getElementById("menu-button").className = "hide";
+      $.ajax({
+        url: "https://spaceinvaderapi.pratapindustries.in",
+        // url: "http://127.0.0.1:8000",
+        contentType: "application/json",
+        type: "get",
+        success: function (data) {
+			document.getElementById('leaderboard-container').className = 'show leaderboard'
+			document.getElementById("close-button").className = "hide button";
+			document.getElementById("enter-name").className = "hide";
+			document.getElementById("restart-buttonlb").className = "show button";
+			document.getElementById("leaderboard-data").className = "show";
+			const table = document.getElementById("leaderboard-data-body");
+			while (table.firstChild) {
+				table.removeChild(table.firstChild);
+			}
+			data.forEach((item) => {
+				let row = table.insertRow();
+				let name = row.insertCell(0);
+				name.innerHTML = item.name;
+				let score = row.insertCell(1);
+				score.innerHTML = item.score;
+			});
+        },
+      });
+
+      setTimeout(() => {
+        this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+        this.ctx.fillStyle = "#000";
+        this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
+        let gameOverImage = document.getElementById("game-over"),
+          playGameButton = document.getElementById("restart-game"),
+          leaderboardButton = document.getElementById("leaderboard");
+        // playGameButton.className = '';
+        gameOverImage.className = "";
+        // leaderboardButton.className = '';
+      }, 600);
+    };
 	
 	GameView.prototype.addLevelText = function(ctx) {
 	  let x = this.game.DIM_X * .01, y = this.game.DIM_Y * .95;
@@ -503,7 +579,7 @@
 	  this.ctx = options.ctx;
 	  this.stars = [];
 	  this.defender = null;
-	  this.defenderLives = 0;
+	  this.defenderLives = 3;
 	  this.score = 0;
 	  this.level = 1;
 	  this.invaderShips = [];
@@ -726,7 +802,7 @@
 	Game.prototype.lose = function() {
 	  this.gameView.pause();
 	  this.gameView.addLivesText(this.ctx);
-	  this.gameView.getName();
+	  this.gameView.showLeaderboardNameSubmit();
 	//   this.gameView.gameOver();
 	};
 	
