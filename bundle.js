@@ -436,23 +436,6 @@
       });
 	};
 
-	GameView.prototype.showLeaderboardNameSubmit = function() {
-		this.stop();
-
-		document.getElementById("menu-container").className = "hide";
-		document.getElementById("menu-button").className = "hide";
-
-		setTimeout(() => {
-			this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
-			this.ctx.fillStyle = "#000";
-			this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
-		}, 600);
-	  document.getElementById('leaderboard-container').className = 'show leaderboard'
-	  document.getElementById("close-button").className = "hide button";
-	  document.getElementById("leaderboard-data").className = "hide";
-	  document.getElementById("enter-name").className = "show";
-	};
-
 	GameView.prototype.gameOver = function () {
       this.stop();
 
@@ -494,6 +477,39 @@
         gameOverImage.className = "";
         // leaderboardButton.className = '';
       }, 600);
+    };
+
+	GameView.prototype.showLeaderboardNameSubmit = function () {
+      this.stop();
+
+      document.getElementById("menu-container").className = "hide";
+      document.getElementById("menu-button").className = "hide";
+
+      setTimeout(() => {
+        this.ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y);
+        this.ctx.fillStyle = "#000";
+        this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
+      }, 600);
+      let gameOver = $.ajax({
+        url: "https://spaceinvaderapi.pratapindustries.in/eligible/?points=" + this.game.score,
+        // url: "http://127.0.0.1:8000",
+        contentType: "application/json",
+        type: "get",
+        success: function (eligible) {
+          if (eligible) {
+            document.getElementById("leaderboard-container").className = "show leaderboard";
+            document.getElementById("close-button").className = "hide button";
+            document.getElementById("leaderboard-data").className = "hide";
+            document.getElementById("enter-name").className = "show";
+          } else {
+            return true;
+          }
+        },
+      });
+	  console.log(gameOver)
+	  if (gameOver.responseText) {
+      this.gameOver();
+    }
     };
 	
 	GameView.prototype.addLevelText = function(ctx) {
