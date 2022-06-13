@@ -497,19 +497,22 @@
         type: "get",
         success: function (eligible) {
           if (eligible) {
-            document.getElementById("leaderboard-container").className = "show leaderboard";
-            document.getElementById("close-button").className = "hide button";
-            document.getElementById("leaderboard-data").className = "hide";
-            document.getElementById("enter-name").className = "show";
+			return false
           } else {
             return true;
           }
         },
       });
 	  console.log(gameOver)
-	  if (gameOver.responseText) {
-      this.gameOver();
-    }
+		if (gameOver.responseText || this.game.score == 0) {
+			this.gameOver();
+    	}
+		else{
+			document.getElementById("leaderboard-container").className = "show leaderboard";
+			document.getElementById("close-button").className = "hide button";
+			document.getElementById("leaderboard-data").className = "hide";
+			document.getElementById("enter-name").className = "show";
+		}
     };
 	
 	GameView.prototype.addLevelText = function(ctx) {
