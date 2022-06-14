@@ -401,7 +401,8 @@
 	};
 
 	GameView.prototype.getScoreText = function() {
-	  return this.game.score;
+	  let score = $("#score").val();
+	  return score;
 	};
 
 	GameView.prototype.hideLeaderboardHome = function () {
@@ -480,6 +481,7 @@
     };
 
 	GameView.prototype.showLeaderboardNameSubmit = function () {
+	  let score = this.game.score
       this.stop();
 
       document.getElementById("menu-container").className = "hide";
@@ -491,7 +493,7 @@
         this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
       }, 600);
       let gameOver = $.ajax({
-        url: "https://spaceinvaderapi.pratapindustries.in/eligible/?points=" + this.game.score,
+        url: "https://spaceinvaderapi.pratapindustries.in/eligible/?points=" + score,
         // url: "http://127.0.0.1:8000",
         contentType: "application/json",
         type: "get",
@@ -504,7 +506,7 @@
         },
       });
 	  console.log(gameOver)
-		if (gameOver.responseText || this.game.score == 0) {
+		if (gameOver.responseText || score == 0) {
 			this.gameOver();
     	}
 		else{
@@ -512,6 +514,7 @@
 			document.getElementById("close-button").className = "hide button";
 			document.getElementById("leaderboard-data").className = "hide";
 			document.getElementById("enter-name").className = "show";
+			$("#score").val(score)
 		}
     };
 	
@@ -598,7 +601,7 @@
 	  this.ctx = options.ctx;
 	  this.stars = [];
 	  this.defender = null;
-	  this.defenderLives = 3;
+	  this.defenderLives = 0;
 	  this.score = 0;
 	  this.level = 1;
 	  this.invaderShips = [];
