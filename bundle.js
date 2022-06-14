@@ -483,6 +483,7 @@
 	GameView.prototype.showLeaderboardNameSubmit = function () {
 	  let score = this.game.score
       this.stop();
+	  let gameOver = this.gameOver()
 
       document.getElementById("menu-container").className = "hide";
       document.getElementById("menu-button").className = "hide";
@@ -492,30 +493,39 @@
         this.ctx.fillStyle = "#000";
         this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
       }, 600);
-      let gameOver = $.ajax({
+      $.ajax({
         url: "https://spaceinvaderapi.pratapindustries.in/eligible/?points=" + score,
         // url: "http://127.0.0.1:8000",
         contentType: "application/json",
         type: "get",
         success: function (eligible) {
+			console.log(eligible)
           if (eligible) {
+			document.getElementById("leaderboard-container").className = "show leaderboard";
+            document.getElementById("close-button").className = "hide button";
+            document.getElementById("leaderboard-data").className = "hide";
+            document.getElementById("enter-name").className = "show";
+            $("#score").val(score);
 			return false
-          } else {
+          } else if (!eligible || score == 0) {
+			gameOver()
             return true;
           }
         },
       });
-	  console.log(gameOver)
-		if (gameOver.responseText || score == 0) {
-			this.gameOver();
-    	}
-		else{
-			document.getElementById("leaderboard-container").className = "show leaderboard";
-			document.getElementById("close-button").className = "hide button";
-			document.getElementById("leaderboard-data").className = "hide";
-			document.getElementById("enter-name").className = "show";
-			$("#score").val(score)
-		}
+	//   console.log(gameOver);
+	// 	if (gameOver || score == 0) {
+	// 		console.log("This")
+	// 		this.gameOver();
+    // 	}
+	// 	else{
+	// 		console.log("That");
+	// 		document.getElementById("leaderboard-container").className = "show leaderboard";
+	// 		document.getElementById("close-button").className = "hide button";
+	// 		document.getElementById("leaderboard-data").className = "hide";
+	// 		document.getElementById("enter-name").className = "show";
+	// 		$("#score").val(score)
+	// 	}
     };
 	
 	GameView.prototype.addLevelText = function(ctx) {
