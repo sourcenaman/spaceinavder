@@ -407,7 +407,7 @@
 
 	GameView.prototype.hideLeaderboardHome = function () {
       document.getElementById("leaderboard-container").className = "hide leaderboard";
-      document.getElementById("close-button").className = "hide button";
+      document.getElementById("close-button").className = "hide btn";
       document.getElementById("leaderboard-data").className = "hide";
       const table = document.getElementById("leaderboard-data-body");
       while (table.firstChild) {
@@ -422,7 +422,7 @@
 	GameView.prototype.showLeaderboardScore = function(data) {
 	  document.getElementById("splash-instruction").className = 'hide'
 	  document.getElementById('leaderboard-container').className = 'show leaderboard'
-	  document.getElementById('close-button').className = 'show button'
+	  document.getElementById('close-button').className = 'show btn'
 	  document.getElementById("leaderboard-data").className = "show";
       const table = document.getElementById("leaderboard-data-body");
 	  while (table.firstChild) {
@@ -449,9 +449,9 @@
         type: "get",
         success: function (data) {
           document.getElementById("leaderboard-container").className = "show leaderboard";
-          document.getElementById("close-button").className = "hide button";
+          document.getElementById("close-button").className = "hide btn";
           document.getElementById("enter-name").className = "hide";
-          document.getElementById("restart-buttonlb").className = "show button";
+          document.getElementById("restart-buttonlb").className = "show btn";
           document.getElementById("leaderboard-data").className = "show";
           const table = document.getElementById("leaderboard-data-body");
           while (table.firstChild) {
@@ -502,14 +502,13 @@
           console.log(eligible);
           if (eligible) {
             document.getElementById("leaderboard-container").className = "show leaderboard";
-            document.getElementById("close-button").className = "hide button";
+            document.getElementById("close-button").className = "hide btn";
+            document.getElementById("restart-buttonlb").className = "hide btn";
             document.getElementById("leaderboard-data").className = "hide";
             document.getElementById("enter-name").className = "show";
             $("#score").val(score);
-            return false;
           } else if (!eligible || score == 0) {
             gameOver();
-            return true;
           }
         },
       });

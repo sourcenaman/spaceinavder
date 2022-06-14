@@ -21,7 +21,6 @@
       </div>
 
       <div id="leaderboard-container" class="hide leaderboard-container">
-        <div class="header">GO INVADE</div>
         <table id="leaderboard-data">
           <thead>
             <tr>
@@ -31,14 +30,15 @@
           </thead>
           <tbody id="leaderboard-data-body"></tbody>
         </table>
-        <div id="close-button" class="hide button">Close</div>
-        <div id="restart-buttonlb" class="hide button">Restart</div>
+        <div id="close-button" class="hide"><p>Close</p></div>
+        <div id="restart-buttonlb" class="hide btn"><p>Restart</p></div>
         <div class="hide" id="enter-name">
-          <p>Enter Your Name</p>
+          <p class="highscore">NEW HIGHSCORE!</p>
           <form action="#">
+            <div class="highscore-name">Enter Your Name</div>
             <input type="text" id="name" name="name" value="" maxlength="4" required><br>
             <input type="text" id="score" value="" class="hide"><br>
-            <div id="submit-button" class="button">Submit</div>
+            <div id="submit-button" class="btn"><p>Submit</p></div>
           </form> 
         </div>
       </div>
