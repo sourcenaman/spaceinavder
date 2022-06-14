@@ -70,7 +70,7 @@
 	  const instructions       = document.getElementById('instructions');
 	  const resumeButton       = document.getElementById('resume-button');
 	  const restartButton      = document.getElementById('restart-button');
-	  const restartButtonlb      = document.getElementById('restart-buttonlb');
+	  const restartButtonlb    = document.getElementById('restart-buttonlb');
 	  const restartGame        = document.getElementById('restart-game');
 	  const closeAbout         = document.getElementById('close-about');
 	  const closeInstructions  = document.getElementById('close-instructions');
@@ -226,7 +226,7 @@
 			score: gameView.getScoreText()
 		}
 		$.ajax({
-			url: "https://spaceinvaderapi.pratapindustries.in/score/",
+			url: "https://api.goplaygonorth.co/score/",
 			// url: "http://127.0.0.1:8000/score/",
 			data: JSON.stringify(data),
 			contentType: "application/json",
@@ -240,14 +240,14 @@
 
 	  leaderboard.addEventListener('click', (e) => {	
 		$.ajax({
-            url: "https://spaceinvaderapi.pratapindustries.in",
-            // url: "http://127.0.0.1:8000",
-            contentType: "application/json",
-            type: "get",
-            success: function (resp) {
-              gameView.showLeaderboardScore(resp);
-            },
-          });
+      url: "https://api.goplaygonorth.co",
+      // url: "http://127.0.0.1:8000",
+      contentType: "application/json",
+      type: "get",
+      success: function (resp) {
+        gameView.showLeaderboardScore(resp);
+      },
+    });
 	  })
 	
 	});
@@ -443,27 +443,27 @@
       document.getElementById("menu-container").className = "hide";
       document.getElementById("menu-button").className = "hide";
       $.ajax({
-        url: "https://spaceinvaderapi.pratapindustries.in",
+        url: "https://api.goplaygonorth.co",
         // url: "http://127.0.0.1:8000",
         contentType: "application/json",
         type: "get",
         success: function (data) {
-			document.getElementById('leaderboard-container').className = 'show leaderboard'
-			document.getElementById("close-button").className = "hide button";
-			document.getElementById("enter-name").className = "hide";
-			document.getElementById("restart-buttonlb").className = "show button";
-			document.getElementById("leaderboard-data").className = "show";
-			const table = document.getElementById("leaderboard-data-body");
-			while (table.firstChild) {
-				table.removeChild(table.firstChild);
-			}
-			data.forEach((item) => {
-				let row = table.insertRow();
-				let name = row.insertCell(0);
-				name.innerHTML = item.name;
-				let score = row.insertCell(1);
-				score.innerHTML = item.score;
-			});
+          document.getElementById("leaderboard-container").className = "show leaderboard";
+          document.getElementById("close-button").className = "hide button";
+          document.getElementById("enter-name").className = "hide";
+          document.getElementById("restart-buttonlb").className = "show button";
+          document.getElementById("leaderboard-data").className = "show";
+          const table = document.getElementById("leaderboard-data-body");
+          while (table.firstChild) {
+            table.removeChild(table.firstChild);
+          }
+          data.forEach((item) => {
+            let row = table.insertRow();
+            let name = row.insertCell(0);
+            name.innerHTML = item.name;
+            let score = row.insertCell(1);
+            score.innerHTML = item.score;
+          });
         },
       });
 
@@ -494,21 +494,21 @@
         this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
       }, 600);
       $.ajax({
-        url: "https://spaceinvaderapi.pratapindustries.in/eligible/?points=" + score,
+        url: "https://api.goplaygonorth.co/eligible/?points=" + score,
         // url: "http://127.0.0.1:8000",
         contentType: "application/json",
         type: "get",
         success: function (eligible) {
-			console.log(eligible)
+          console.log(eligible);
           if (eligible) {
-			document.getElementById("leaderboard-container").className = "show leaderboard";
+            document.getElementById("leaderboard-container").className = "show leaderboard";
             document.getElementById("close-button").className = "hide button";
             document.getElementById("leaderboard-data").className = "hide";
             document.getElementById("enter-name").className = "show";
             $("#score").val(score);
-			return false
+            return false;
           } else if (!eligible || score == 0) {
-			gameOver()
+            gameOver();
             return true;
           }
         },
