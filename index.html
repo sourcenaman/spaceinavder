@@ -156,6 +156,29 @@ $(document).ready(function() {
 
 $(document).ready(function(){
    $('div').disableSelection();
+
+   let enemiesList = [
+    ["./images/a-1.png", "./images/a-2.png"],
+    ["./images/b-1.png", "./images/b-2.png"],
+    ["./images/c-1.png", "./images/c-2.png"],
+    ["./images/d-1.png", "./images/d-2.png"],
+    ["./images/e-1.png", "./images/e-2.png"],
+    ["./images/f-1.png", "./images/f-2.png"],
+    ["./images/g-1.png", "./images/g-2.png"]
+   ]
+   let enemiesEle = [
+    ["grunt-1", "grunt-2"],
+    ["soldier-1", "soldier-2"],
+    ["invader-1", "invader-2"]
+   ]
+
+   for (let ene of enemiesEle){
+    const random = Math.floor(Math.random() * enemiesList.length-1);
+    document.getElementById(ene[0]).src = enemiesList[random][0]
+    document.getElementById(ene[1]).src = enemiesList[random][1]
+    enemiesList.splice(random, 1)
+   }
+
 });
 
 $.fn.extend({
