@@ -4,7 +4,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  background-image: url(../images/bg.jpeg);
+  /* background-image: url(../images/bg.jpeg); */
+  background-color: #000;
   background-repeat: no-repeat;
   background-size: 100%;
 
@@ -507,6 +508,17 @@ th, td {
     width: 100%;
     position: relative;
     background-color: #000;
+  }
+
+  #main-logo, #main-logo-2 {
+    position: absolute;
+    top: 10px;
+    left: 7%;
+    width: 85%;
+}
+
+  #leaderboard-container {
+    left: 20%;
   }
 }
 @media screen and (max-width: 1200px) {
