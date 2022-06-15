@@ -438,6 +438,7 @@
 	};
 
 	GameView.prototype.gameOver = function () {
+	  console.log("I am gameOver")
       this.stop();
 
       document.getElementById("menu-container").className = "hide";
@@ -483,7 +484,6 @@
 	GameView.prototype.showLeaderboardNameSubmit = function () {
 	  let score = this.game.score
       this.stop();
-	  let gameOver = this.gameOver()
 
       document.getElementById("menu-container").className = "hide";
       document.getElementById("menu-button").className = "hide";
@@ -493,6 +493,7 @@
         this.ctx.fillStyle = "#000";
         this.ctx.fillRect(0, 0, this.game.DIM_X, this.game.DIM_Y);
       }, 600);
+	  let self = this
       $.ajax({
         url: "https://api.goplaygonorth.co/eligible/?points=" + score,
         // url: "http://127.0.0.1:8000",
@@ -500,31 +501,23 @@
         type: "get",
         success: function (eligible) {
           console.log(eligible);
+		  if (score == 0){
+			eligible = false
+		  }
           if (eligible) {
-            document.getElementById("leaderboard-container").className = "show leaderboard";
+			console.log("In if");
             document.getElementById("close-button").className = "hide btn";
             document.getElementById("restart-buttonlb").className = "hide btn";
             document.getElementById("leaderboard-data").className = "hide";
             document.getElementById("enter-name").className = "show";
+            document.getElementById("leaderboard-container").className = "show leaderboard";
             $("#score").val(score);
           } else if (!eligible || score == 0) {
-            gameOver();
+			console.log("In else if");
+            self.gameOver();
           }
         },
       });
-	//   console.log(gameOver);
-	// 	if (gameOver || score == 0) {
-	// 		console.log("This")
-	// 		this.gameOver();
-    // 	}
-	// 	else{
-	// 		console.log("That");
-	// 		document.getElementById("leaderboard-container").className = "show leaderboard";
-	// 		document.getElementById("close-button").className = "hide button";
-	// 		document.getElementById("leaderboard-data").className = "hide";
-	// 		document.getElementById("enter-name").className = "show";
-	// 		$("#score").val(score)
-	// 	}
     };
 	
 	GameView.prototype.addLevelText = function(ctx) {
@@ -610,7 +603,7 @@
 	  this.ctx = options.ctx;
 	  this.stars = [];
 	  this.defender = null;
-	  this.defenderLives = 3;
+	  this.defenderLives = 0;
 	  this.score = 0;
 	  this.level = 1;
 	  this.invaderShips = [];
