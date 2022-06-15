@@ -654,6 +654,7 @@
 	
 	  let spawnUfoChance = Math.random() * 700;
 	  let spawnPosition = Math.round(Math.random() * 10);
+	  console.log("addUFO")
 	  let vel, spawnIdx;
 	
 	  if (spawnPosition > 5) {
@@ -667,7 +668,7 @@
 	  let spawnPositions = [-30, 930];
 	
 	  if (spawnUfoChance < 1) {
-	    let ufoImage = document.getElementById('ufo');
+		let ufoImage = document.getElementById("ufo");
 	    let ufoShip = new Ship ({
 	      name: 'ufo',
 	      game: this,

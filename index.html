@@ -112,11 +112,11 @@
 
       <img class="hide" id="soldier-2" src="./images/lighning-2.png" />
 
-      <img class="hide" id="invader-1" src="./images/coin-1.png" />
+      <img class="hide" id="invader-1" src="./images/g-1.png" />
 
-      <img class="hide" id="invader-2" src="./images/coin-2.png" />
+      <img class="hide" id="invader-2" src="./images/g-2.png" />
 
-      <img class="hide" id="ufo" src="./images/ufo.jpg" />
+      <img class="hide" id="ufo" data-count="1" src="./images/a-1.png" />
 
       <img class="hide" id="lives" src="./images/lives.jpg" />
 
@@ -158,13 +158,16 @@ $(document).ready(function(){
    $('div').disableSelection();
 
    let enemiesList = [
-    ["./images/a-1.png", "./images/a-2.png"],
-    ["./images/b-1.png", "./images/b-2.png"],
-    ["./images/c-1.png", "./images/c-2.png"],
-    ["./images/d-1.png", "./images/d-2.png"],
+    // ["./images/a-1.png", "./images/a-2.png"],
+    // ["./images/b-1.png", "./images/b-2.png"],
+    // ["./images/c-1.png", "./images/c-2.png"],
+    // ["./images/d-1.png", "./images/d-2.png"],
     ["./images/e-1.png", "./images/e-2.png"],
     ["./images/f-1.png", "./images/f-2.png"],
-    ["./images/g-1.png", "./images/g-2.png"]
+    ["./images/g-1.png", "./images/g-2.png"],
+    ["./images/h-1.png", "./images/h-2.png"],
+    ["./images/i-1.png", "./images/i-2.png"],
+    ["./images/j-1.png", "./images/j-2.png"],
    ]
    let enemiesEle = [
     ["grunt-1", "grunt-2"],
@@ -173,11 +176,32 @@ $(document).ready(function(){
    ]
 
    for (let ene of enemiesEle){
-    const random = Math.floor(Math.random() * enemiesList.length-1);
+    if(enemiesList.length == 0){
+      break
+    }
+    const random = Math.floor(Math.random() * (enemiesList.length-1));
     document.getElementById(ene[0]).src = enemiesList[random][0]
     document.getElementById(ene[1]).src = enemiesList[random][1]
     enemiesList.splice(random, 1)
    }
+
+   setInterval(function() {
+    let ufo = document.getElementById("ufo")
+    console.log(ufo)
+    		  let ufoList = ["./images/a-1.png", "./images/b-1.png", "./images/d-1.png"];
+          if (ufo.dataset.count == 1){
+            ufo.src = ufoList[1];
+            ufo.dataset.count = 2
+          }
+          else if (ufo.dataset.count == 2){
+            ufo.src = ufoList[2];
+            ufo.dataset.count = 3
+          }
+          else if (ufo.dataset.count == 3){
+            ufo.src = ufoList[0];
+            ufo.dataset.count = 1
+          }
+   }, 5000)
 
 });
 
