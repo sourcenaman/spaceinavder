@@ -610,7 +610,7 @@
 	  this.ctx = options.ctx;
 	  this.stars = [];
 	  this.defender = null;
-	  this.defenderLives = 0;
+	  this.defenderLives = 3;
 	  this.score = 0;
 	  this.level = 1;
 	  this.invaderShips = [];
