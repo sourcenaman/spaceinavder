@@ -4,8 +4,8 @@ body {
   justify-content: center;
   align-items: center;
 
-  /* background-image: url(../images/bg.jpeg); */
-  background-color: #000;
+  background-image: url(../images/bg.jpeg);
+  /* background-color: #000; */
   background-repeat: no-repeat;
   background-size: 100%;
 
@@ -570,5 +570,6 @@ th, td {
 
   body {
     background-repeat: inherit;
+    background-size: 300%;
   }
 }
