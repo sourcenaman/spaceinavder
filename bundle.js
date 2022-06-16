@@ -478,12 +478,11 @@
         // playGameButton.className = '';
         gameOverImage.className = "";
         // leaderboardButton.className = '';
-      }, 600);
+      }, 100);
     };
 
 	GameView.prototype.showLeaderboardNameSubmit = function () {
 	  let score = this.game.score
-      this.stop();
 
       document.getElementById("menu-container").className = "hide";
       document.getElementById("menu-button").className = "hide";
@@ -505,12 +504,14 @@
 			eligible = false
 		  }
           if (eligible) {
+			self.stop();
 			console.log("In if");
             document.getElementById("close-button").className = "hide btn";
             document.getElementById("restart-buttonlb").className = "hide btn";
             document.getElementById("leaderboard-data").className = "hide";
             document.getElementById("enter-name").className = "show";
             document.getElementById("leaderboard-container").className = "show leaderboard";
+			document.getElementById("game-over").className = "";
             $("#score").val(score);
           } else if (!eligible || score == 0) {
 			console.log("In else if");
@@ -654,7 +655,6 @@
 	
 	  let spawnUfoChance = Math.random() * 700;
 	  let spawnPosition = Math.round(Math.random() * 10);
-	  console.log("addUFO")
 	  let vel, spawnIdx;
 	
 	  if (spawnPosition > 5) {
@@ -669,6 +669,20 @@
 	
 	  if (spawnUfoChance < 1) {
 		let ufoImage = document.getElementById("ufo");
+		console.log("addUFO2");
+		let ufo = document.getElementById("ufo");
+        console.log(ufo);
+        let ufoList = ["./images/a-1.png", "./images/b-1.png", "./images/d-1.png"];
+        if (ufo.dataset.count == 1) {
+          ufo.src = ufoList[1];
+          ufo.dataset.count = 2;
+        } else if (ufo.dataset.count == 2) {
+          ufo.src = ufoList[2];
+          ufo.dataset.count = 3;
+        } else if (ufo.dataset.count == 3) {
+          ufo.src = ufoList[0];
+          ufo.dataset.count = 1;
+        }
 	    let ufoShip = new Ship ({
 	      name: 'ufo',
 	      game: this,

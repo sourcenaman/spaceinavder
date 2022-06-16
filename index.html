@@ -185,23 +185,23 @@ $(document).ready(function(){
     enemiesList.splice(random, 1)
    }
 
-   setInterval(function() {
-    let ufo = document.getElementById("ufo")
-    console.log(ufo)
-    		  let ufoList = ["./images/a-1.png", "./images/b-1.png", "./images/d-1.png"];
-          if (ufo.dataset.count == 1){
-            ufo.src = ufoList[1];
-            ufo.dataset.count = 2
-          }
-          else if (ufo.dataset.count == 2){
-            ufo.src = ufoList[2];
-            ufo.dataset.count = 3
-          }
-          else if (ufo.dataset.count == 3){
-            ufo.src = ufoList[0];
-            ufo.dataset.count = 1
-          }
-   }, 5000)
+  //  setInterval(function() {
+  //   let ufo = document.getElementById("ufo")
+  //   console.log(ufo)
+  //   		  let ufoList = ["./images/a-1.png", "./images/b-1.png", "./images/d-1.png"];
+  //         if (ufo.dataset.count == 1){
+  //           ufo.src = ufoList[1];
+  //           ufo.dataset.count = 2
+  //         }
+  //         else if (ufo.dataset.count == 2){
+  //           ufo.src = ufoList[2];
+  //           ufo.dataset.count = 3
+  //         }
+  //         else if (ufo.dataset.count == 3){
+  //           ufo.src = ufoList[0];
+  //           ufo.dataset.count = 1
+  //         }
+  //  }, 5000)
 
 });
 
