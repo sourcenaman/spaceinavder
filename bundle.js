@@ -705,6 +705,33 @@
 	  let invaderIdx = 0;
 	  let vel = [0.27, 0];
 	  vel[0] += 0.05 * level;
+	     let enemiesList = [
+         // ["./images/a-1.png", "./images/a-2.png"],
+         // ["./images/b-1.png", "./images/b-2.png"],
+         // ["./images/c-1.png", "./images/c-2.png"],
+         // ["./images/d-1.png", "./images/d-2.png"],
+         ["./images/e-1.png", "./images/e-2.png"],
+         ["./images/f-1.png", "./images/f-2.png"],
+         ["./images/g-1.png", "./images/g-2.png"],
+         ["./images/h-1.png", "./images/h-2.png"],
+         ["./images/i-1.png", "./images/i-2.png"],
+         ["./images/j-1.png", "./images/j-2.png"],
+       ];
+       let enemiesEle = [
+         ["grunt-1", "grunt-2"],
+         ["soldier-1", "soldier-2"],
+         ["invader-1", "invader-2"],
+       ];
+
+       for (let ene of enemiesEle) {
+         if (enemiesList.length == 0) {
+           break;
+         }
+         const random = Math.floor(Math.random() * (enemiesList.length - 1));
+         document.getElementById(ene[0]).src = enemiesList[random][0];
+         document.getElementById(ene[1]).src = enemiesList[random][1];
+         enemiesList.splice(random, 1);
+       }
 	
 	  for (let row = 0; row < 5; row++) {
 	    if (row < 1) {
