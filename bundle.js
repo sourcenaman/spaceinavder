@@ -111,7 +111,7 @@
 	  });
 	
 	  playGameButton.addEventListener("click", () => {
-	    menuButton.className        =     '';
+	    menuButton.className        = 'hide';
 	    playGameButton.className    = 'hide';
 	    leaderboard.className       = 'hide';
 		mainLogo.className          = 'hide';
